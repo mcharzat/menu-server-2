@@ -15,6 +15,7 @@ jobs:
           java-version: '11'
       - run: mvn package 
       - run: git add target/menu-server.jar
+      - run: git config --global user.name antoine-overflow
       - run: git commit -m ".jar upload"
       - run: git push origin main
   

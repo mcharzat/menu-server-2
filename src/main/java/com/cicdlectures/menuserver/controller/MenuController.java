@@ -3,7 +3,9 @@ package com.cicdlectures.menuserver.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,5 +38,11 @@ public class MenuController {
   @ResponseStatus(HttpStatus.CREATED)
   public MenuDto createMenu(@RequestBody MenuDto menu) {
     return createMenuService.createMenu(menu);
+  }
+
+  @DeleteMapping(path = "/menus/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public void deleteMenu(@PathVariable(value = "id") long  id) {
+    listMenuService.deleteMenu(id);
   }
 }

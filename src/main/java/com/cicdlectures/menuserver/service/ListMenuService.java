@@ -24,7 +24,4 @@ public class ListMenuService {
     return MenuDto.fromModelIterable(menuRepository.findAll());
   }
 
-  public void deleteMenu(long id) {
-    menuRepository.deleteById(id);
-  }
 }

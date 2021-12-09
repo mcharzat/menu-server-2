@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 
 import com.cicdlectures.menuserver.dto.MenuDto;
 import com.cicdlectures.menuserver.service.CreateMenuService;
+import com.cicdlectures.menuserver.service.DeleteMenuService;
 import com.cicdlectures.menuserver.service.ListMenuService;
 
 @RestController
@@ -21,11 +22,14 @@ public class MenuController {
 
   private final CreateMenuService createMenuService;
 
+  private final DeleteMenuService deleteMenuService;
+
   private final ListMenuService listMenuService;
 
   @Autowired
-  MenuController(CreateMenuService createMenuService, ListMenuService listMenuService) {
+  MenuController(CreateMenuService createMenuService, DeleteMenuService deleteMenuService, ListMenuService listMenuService) {
     this.createMenuService = createMenuService;
+    this.deleteMenuService = deleteMenuService;
     this.listMenuService = listMenuService;
   }
 
@@ -43,6 +47,6 @@ public class MenuController {
   @DeleteMapping(path = "/menus/{id}")
   @ResponseStatus(HttpStatus.OK)
   public void deleteMenu(@PathVariable(value = "id") long  id) {
-    listMenuService.deleteMenu(id);
+    deleteMenuService.deleteMenu(id);
   }
 }
